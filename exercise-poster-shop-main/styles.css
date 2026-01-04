@@ -1,0 +1,232 @@
+/* ---------- GLOBAL ---------- */
+body{
+    margin:0;
+    background:#000;
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+/* ---------- HEADER ---------- */
+
+header{
+    background:#3ee98e;
+    text-align:center;
+    padding:60px 0 120px 0;
+    position:relative;
+}
+
+header aside{
+    position:absolute;
+    left:30px;
+    top:30px;
+}
+
+header h1{
+    font-size:60px;
+    margin:0;
+    color:black;
+}
+
+header > img{
+    width:180px;
+    margin:0 auto;
+    display:block;
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%) translateY(50%);
+    bottom: 56px;
+}
+
+/* ---------- MAIN AREA ---------- */
+
+main{
+    background:black;
+    padding:120px 0 60px 0;
+}
+
+/* ---------- GRID WRAPPER ---------- */
+
+.wrapper{
+    width:80%;
+    margin:auto;
+
+    display:grid;
+    gap:40px;
+
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* ---------- SMALL CARDS ---------- */
+
+.card{
+    background:#111;
+    padding:20px;
+}
+
+.card h2{
+    margin:10px 0;
+}
+
+.card p{
+    color:#ccc;
+}
+
+.button{
+    background:#ff2d55;
+    color:white;
+    border:none;
+    padding:10px 12px;
+    cursor:pointer;
+}
+
+/* ---------- BIG CARDS ---------- */
+
+.big-card{
+    background:#111;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column: span 3;
+}
+
+.big-card section{
+    padding:20px;
+}
+
+.big-card p{
+    color:#ccc;
+}
+
+/* ---------- FIX: SISTA TVÅ BIG-CARDS ---------- */
+
+.wrapper .big-card:nth-last-child(2),
+.wrapper .big-card:nth-last-child(1){
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+
+    margin-top:40px;
+    transform-origin: left center;
+}
+
+.wrapper .big-card:nth-last-child(2){
+    transform: scale(1.1) translateX(35%);
+}
+
+.wrapper .big-card:nth-last-child(1){
+    transform: scale(1.1) translateX(45%);
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:1000px){
+    .wrapper{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .big-card{
+        grid-column: span 2;
+    }
+
+    .wrapper .big-card:nth-last-child(2),
+    .wrapper .big-card:nth-last-child(1){
+        grid-column: span 2;
+        margin-top:40px;
+        transform: scale(1.1) translateX(0);
+        transform-origin: center;
+    }
+}
+
+@media(max-width:700px){
+    .wrapper{
+        grid-template-columns: 1fr;
+    }
+
+    .big-card{
+        grid-template-columns:1fr;
+        grid-column: span 1;
+    }
+
+    .wrapper .big-card:nth-last-child(2),
+    .wrapper .big-card:nth-last-child(1){
+        grid-column: span 1;
+        margin-top:40px;
+        transform: scale(1.1) translateX(0);
+        transform-origin: center;
+    }
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+    background:#222;
+    padding:60px 0;
+}
+
+.footer-links{
+    width:80%;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+}
+
+.link{
+    color:white;
+    display:block;
+    text-decoration:none;
+}
+
+.icons img{
+    width:25px;
+}
+
+.icons{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+@media(max-width:700px){
+    .footer-links{
+        flex-direction:column;
+        gap:30px;
+    }
+}
+
+/* ---------- POPUP MENU (CSS-only hamburgare) ---------- */
+
+#menuToggle {
+    display: none;
+}
+
+.hamburger {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    cursor: pointer;
+}
+
+.popup-menu {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    background: #111;
+    padding: 12px 20px;
+    border-radius: 6px;
+    display: none;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.popup-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#menuToggle:checked + .hamburger + h1 + img + .popup-menu {
+    display: block;
+}
